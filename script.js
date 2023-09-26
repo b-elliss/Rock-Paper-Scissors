@@ -1,24 +1,41 @@
 
 function getComputerChoice() {
-    let compChoice = Math.random();
-    if (compChoice <= 0.32) {
+    let compChoice = Math.floor(Math.random() * 3);
+    switch (compChoice) {
+        case 0:
+            return('rock');
+            break;
+        case 1:
+            return('paper');
+            break;
+        case 2:
+            return('scissors');
+            break;
+    }
+    // switch statement better suits this circumstance
+    /* if (compChoice === 0) {
         return "Rock";
-    } else if (compChoice > 0.32 && compChoice <= 0.65) {
+    } else if (compChoice === 1) {
         return "Paper";
-    } else return "Scissors"
+    } else if (compChoice === 2) {
+     return "Scissors";
+    } */
 };
-/*console.log(getComputerChoice())*/
+const compChoice = getComputerChoice();
+console.log(compChoice);
+/*const computerSelection = getComputerChoice();
+const playerSelection = "paper"*/
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return "Tie! Play again";
-    } else if (playerSelection == 'rock' && computerSelection == 'Paper') {
+    } else if (playerSelection == 'rock' && computerSelection == 'paper') {
         return "You lose! Paper beats Rock.";
-    } else if (playerSelection == 'paper' && computerSelection == 'Scissors') {
+    } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
         return "You lose! Scissors beats paper.";
-    } else if (playerSelection == 'scissors' && computerSelection == 'Rock') {
+    } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
         return "You lose! Rock beats scissors.";
     } else return "You win!"
 };
-const playerSelection = "paper";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+console.log(playRound('rock', compChoice));
+console.log(compChoice);
