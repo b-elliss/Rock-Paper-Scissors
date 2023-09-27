@@ -12,30 +12,29 @@ function getComputerChoice() {
             return('scissors');
             break;
     }
-    // switch statement better suits this circumstance
-    /* if (compChoice === 0) {
-        return "Rock";
-    } else if (compChoice === 1) {
-        return "Paper";
-    } else if (compChoice === 2) {
-     return "Scissors";
-    } */
 };
+
 const compChoice = getComputerChoice();
-console.log(compChoice);
-/*const computerSelection = getComputerChoice();
-const playerSelection = "paper"*/
+
 function playRound(playerSelection, computerSelection) {
+    //let playerSelection = prompt("Rock, Paper or Scissors?");
     if (playerSelection == computerSelection) {
-        return "Tie! Play again";
+        return alert("Tie! Play again");
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
-        return "You lose! Paper beats Rock.";
+        return alert("You lose! Paper beats Rock.");
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-        return "You lose! Scissors beats paper.";
+        return alert("You lose! Scissors beats paper.");
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-        return "You lose! Rock beats scissors.";
-    } else return "You win!"
+        return alert("You lose! Rock beats scissors.");
+    } else return alert("You win!")
+};
+
+function game() {
+    for(i = 0; i < 5; i++) {
+        console.log(playRound('rock', compChoice));
+    }
 };
 
 console.log(playRound('rock', compChoice));
 console.log(compChoice);
+//console.log(game());
