@@ -37,4 +37,4 @@ function game() {
 
 console.log(playRound('rock', compChoice));
 console.log(compChoice);
-//console.log(game());
+//console.log(game());n
