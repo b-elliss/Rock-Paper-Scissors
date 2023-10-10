@@ -1,8 +1,10 @@
+const compArr = ["rock","paper","scissors"];
+const gameButtons = document.querySelectorAll('.gameButton');
+const gameComments = document.querySelector('#gameComments');
 let playerScore = 0;
 let computerScore = 0;
-const gameButtons = document.querySelectorAll('.gameButton');
 let compChoice;
-const compArr = ["rock","paper","scissors"];
+
 const getCompChoice = () => {
     compChoice = compArr[Math.floor(Math.random() * 3)];
 };
@@ -10,19 +12,35 @@ const getCompChoice = () => {
 gameButtons.forEach(gameButtons => {
     gameButtons.addEventListener('click', () => {
         getCompChoice();
-        let playerButton = gameButtons.textContent.toLowerCase();
-        document.querySelector('#gamecomments').textContent = `${playRound(playerButton, compChoice)}`;
+        let playerChoice = gameButtons.textContent.toLowerCase();
+        gameComments.textContent = `${playRound(playerChoice, compChoice)}`;
         document.querySelector('.computerChoice').textContent = `Computer chose ${compChoice}!`;
-        document.querySelector('.playerChoice').textContent = `You chose ${playerButton}!`;
+        document.querySelector('.playerChoice').textContent = `You chose ${playerChoice}!`;
         document.querySelector('#playerScore').textContent = `${playerScore}`;
         document.querySelector('#computerScore').textContent = `${computerScore}`;
-        if (playerScore == '5') {
-            return alert("You won the game!");
-        } else if (computerScore == '5') {
-            return alert("You lost to the computer :'(")
-        };
+        checkWinner();
+        reset()
     });
 });
+
+const checkWinner = () => {
+    if (playerScore == '5') {
+        return alert("You won the game!");
+    } else if (computerScore == '5') {
+        return alert("You lost to the computer :'(")
+    };
+};
+
+const reset = () => {
+    if (playerScore == '5' || computerScore == '5') {
+        const resetButton = document.createElement('button');
+        resetButton.innerText = 'Reset';
+        document.getElementById('buttondiv').append(resetButton);
+        resetButton.addEventListener('click', () => {
+            location.reload();
+            return false;   
+    });
+}};
 
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection == computerSelection) {
@@ -47,9 +65,3 @@ const playRound = (playerSelection, computerSelection) => {
         return "You win! Scissors beats paper.";
     }
 };
-
-console.log(playerScore);
-console.log(computerScore);
-
-//console.log(compChoice);
-//console.log(game());
